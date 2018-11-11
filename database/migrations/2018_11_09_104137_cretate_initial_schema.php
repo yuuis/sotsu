@@ -120,7 +120,7 @@ class CretateInitialSchema extends Migration
             $table->string('room_id');
             $table->string('store_id');
             $table->string('furniture_set_id');
-            $table->date('reserve_time');
+            $table->datetime('reserve_time');
             $table->timestamps();
         });
     }
