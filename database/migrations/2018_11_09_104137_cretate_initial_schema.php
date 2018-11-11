@@ -51,6 +51,7 @@ class CretateInitialSchema extends Migration
             $table->string('name');
             $table->string('address');
             $table->string('open_time');
+            $table->string('open_day');
             $table->timestamps();
         });
 
