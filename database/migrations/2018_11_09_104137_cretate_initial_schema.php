@@ -60,7 +60,7 @@ class CretateInitialSchema extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('price');
-            $table->string('futniture_category_id');
+            $table->string('furniture_category_id');
             $table->timestamps();
         });
 
