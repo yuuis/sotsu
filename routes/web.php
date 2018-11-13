@@ -11,6 +11,13 @@
 |
 */
 
-Route::get('/app', function () {
-    return view('index');
+Route::get('/', function () {
+    return view('top');
 });
+
+Route::get("rooms/search", ["as" => "rooms.search", "uses" => "RoomController@search"]);
+Route::resource("rooms", "RoomController", ["only" => ["index", "show"]]);
+Route::resource("furnitures", "FurnitureController", ["only" => ["index", "show"]]);
+Route::resource("reserves", "ReserveController", ["only" => ["create", "store"]]);
+
+Route::resource("furniture_sets", "FurnitureSetContorller", ["only" => ["show"]]);

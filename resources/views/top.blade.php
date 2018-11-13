@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('search room')
+@section('title')
 Main Page
 @endsection
 
@@ -18,7 +18,7 @@ Main Page
                             <div class="col-md-7 copy animate-box">
                                 <h1>売り文句</h1>
                                 <p>超イケイケのサービスですっせ</p>
-                                <p><a href="" target="_blank" class="btn btn-white">お店を探してみる</a></p>
+                                <p><a href="{{url('rooms')}}" class="btn btn-white">お店を探してみる</a></p>
                             </div>
                         </div>
                     </div>
