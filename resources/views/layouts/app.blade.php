@@ -178,6 +178,8 @@
 	<script src="{{ asset('js/magnific-popup-options.js') }}"></script>
 	<!-- Main -->
 	<script src="{{ asset('js/main.js') }}"></script>
+
+	@yield('script')
 </body>
 
 </html>

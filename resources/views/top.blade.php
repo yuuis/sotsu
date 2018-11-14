@@ -92,8 +92,9 @@ Main Page
         </div>
     </div>
 </div>
+@endsection
 
-
+@section('script')
 <script type="text/javascript">
     $(function() {
         $('nav ul li').eq(0).addClass('active');
