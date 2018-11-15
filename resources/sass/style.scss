@@ -451,7 +451,7 @@ h1, h2, h3, h4, h5, h6, figure {
 		}	
 	}
 	//add tiner header
-	&.gtco-cover-tin {
+	&.gtco-cover-slim {
 		height: 250px;
 		@media screen and (max-width: $screen-sm) {
 			height: inherit!important;
@@ -460,6 +460,27 @@ h1, h2, h3, h4, h5, h6, figure {
 		.display-t,
 		.display-tc {
 			height: 230px;
+			display: table;
+			width: 100%;
+			h1 {
+				margin-top: 20px !important;
+			}
+			@media screen and (max-width: $screen-sm) {
+				padding: 3em 0;
+				height: inherit!important;
+			}
+		}	
+	}
+
+	&.gtco-cover-thin {
+		height: 150px;
+		@media screen and (max-width: $screen-sm) {
+			height: inherit!important;
+			padding: 3em 0;
+		}
+		.display-t,
+		.display-tc {
+			height: 130px;
 			display: table;
 			width: 100%;
 			h1 {
@@ -1459,7 +1480,7 @@ form {
 .row-pb-sm {
 	padding-bottom: 2em!important;
 }
-.row-pb-tin {
+.row-pb-slim {
 	padding-bottom: 0em!important;
 
 	.gtco-heading {

@@ -10,6 +10,8 @@ class FurnitureSetController extends Controller
     public function show(Request $request, Int $id)
     {
         $set = FurnitureSet::find($id);
-        return view("furniture_sets.show", compact("set"));
+        $room_id = $request->room_id;
+
+        return view("furniture_sets.show", compact("set", "room_id"));
     }
 }

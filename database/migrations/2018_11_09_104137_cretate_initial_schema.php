@@ -75,7 +75,7 @@ class CretateInitialSchema extends Migration
         Schema::create('furniture_images', function (Blueprint $table) {
             $table->increments('id');
             $table->string('image_path');
-            $table->string('furniture_id');
+            $table->string('furnitures_id');
             $table->timestamps();
         });
 
@@ -87,9 +87,9 @@ class CretateInitialSchema extends Migration
         });
 
         // 家具と家具セットの中間テーブル
-        Schema::create('furniture_furniture_set', function (Blueprint $table) {
+        Schema::create('furniture_set_furnitures', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('furniture_id');
+            $table->string('furnitures_id');
             $table->string('furniture_set_id');
             $table->timestamps();
         });
@@ -142,7 +142,7 @@ class CretateInitialSchema extends Migration
         Schema::dropIfExists('furniture_categories');
         Schema::dropIfExists('furniture_images');
         Schema::dropIfExists('furniture_sets');
-        Schema::dropIfExists('furniture_furniture_set');
+        Schema::dropIfExists('furniture_set_furnitures');
         Schema::dropIfExists('room_furniture_set');
         Schema::dropIfExists('users');
         Schema::dropIfExists('reserves');

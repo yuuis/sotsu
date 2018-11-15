@@ -2,8 +2,7 @@
 
 @section('contents')
 
-<div class="modal fade" id="modalSearchForm" tabindex="-1" role="dialog" aria-labelledby="modalSearchForm" aria-hidden="true"
-    data-backdrop="static">
+<div class="modal fade" id="modalSearchForm" tabindex="-1" role="dialog" aria-labelledby="modalSearchForm" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -72,7 +71,7 @@
     </div>
 </div>
 
-<header id="gtco-header" class="gtco-cover gtco-cover-tin gtco-inner" role="banner">
+<header id="gtco-header" class="gtco-cover gtco-cover-slim gtco-inner" role="banner">
     <div class="gtco-container">
         <div class="row">
             <div class="col-md-12 col-md-offset-0 text-left">
@@ -83,7 +82,7 @@
                                 <h1 class="no-margin">お部屋を探します。</h1>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia facilis, accusamus
                                     iusto animi.</p>
-                                <p class="text-right"><a href="{{url('rooms')}}" class="btn btn-white">別の条件で探す</a></p>
+                                <p class="text-right"><button data-toggle="modal" data-target="#modalSearchForm" class="btn btn-white">別の条件で探す</button></p>
                             </div>
                         </div>
                     </div>
@@ -96,7 +95,7 @@
 <div class="gtco-section gtco-testimonial gtco-gray">
     <div class="gtco-container container">
 
-        <div class="row row-pb-tin">
+        <div class="row row-pb-slim">
             <div class="col-md-8 col-md-offset-2 gtco-heading text-center">
                 <h2>かっこいい見出し</h2>
                 <p>こんな感じの流れですよ</p>

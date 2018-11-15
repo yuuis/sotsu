@@ -95,8 +95,6 @@
         </div>
     </div>
 </header>
-
-{{ var_dump($rooms) }}
 @endsection
 
 @section('script')

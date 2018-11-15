@@ -10,6 +10,7 @@
                 <h4 class="modal-title" id="gridModalLabel">お部屋の家具について</h4>
             </div>
             <form id="estimate_form" action="{{ url('furniture_sets/') }}" method="GET" class="container-fluid">
+                <input type="hidden" name="room_id" value="{{ $room->id }}">
                 <div class="modal-body">
                     <p>お部屋の家具も一緒にチョイスすることで、引っ越し時にお部屋に設置いたします。</p>
                     <div class="row form-group">
@@ -56,7 +57,7 @@
 <div class="gtco-section gtco-testimonial gtco-gray" style="padding:2em 0;">
     <div class="gtco-container container">
 
-        <div class="row row-pb-tin">
+        <div class="row row-pb-slim">
             <div class="col-md-10 gtco-heading text-left">
                 <h2>{{ $room->name }}</h2>
             </div>

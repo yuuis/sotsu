@@ -8,7 +8,7 @@ class FurnitureSet extends Model
 {
     public function furnitures()
     {
-        return $this->belongsToMany('App\Http\Models\Furniture');
+        return $this->belongsToMany('App\Http\Models\Furnitures');
     }
 
     public function fsfPath(Int $roomId)

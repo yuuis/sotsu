@@ -4,7 +4,7 @@ namespace App\Http\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Furniture extends Model
+class Furnitures extends Model
 {
     public function category()
     {

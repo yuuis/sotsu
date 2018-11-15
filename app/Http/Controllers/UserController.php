@@ -8,9 +8,9 @@ use App\Http\Models\User;
 
 class UserController extends Controller
 {
-    public function create()
+    public function create(Request $request)
     {
-        return view("users.create");
+        return view("users.create", compact($request));
     }
 
     public function store(Request $request)

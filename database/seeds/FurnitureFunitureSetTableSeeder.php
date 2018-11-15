@@ -11,8 +11,8 @@ class FurnitureFunitureSetTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table("furniture_furniture_set")->insert([
-            "furniture_id" => 1,
+        DB::table("furniture_set_furnitures")->insert([
+            "furnitures_id" => 1,
             "furniture_set_id" => 1
         ]);
     }
