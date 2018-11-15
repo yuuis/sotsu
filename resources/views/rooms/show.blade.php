@@ -9,13 +9,12 @@
             <div class="modal-header">
                 <h4 class="modal-title" id="gridModalLabel">お部屋の家具について</h4>
             </div>
-            <form action="{{ url('furniture_sets/') }}" method="GET" class="container-fluid">
+            <form id="estimate_form" action="{{ url('furniture_sets/') }}" method="GET" class="container-fluid">
                 <div class="modal-body">
                     <p>お部屋の家具も一緒にチョイスすることで、引っ越し時にお部屋に設置いたします。</p>
                     <div class="row form-group">
                         <div class="col-md-6">
-                            <input type="radio" id="require" name="furniture_request" value="true" class="radio-image"
-                                checked />
+                            <input type="radio" id="require" name="furniture_request" value="true" class="radio-image" />
                             <label for="require">家具をレンタルする</label>
                         </div>
                         <div class="col-md-6">
@@ -24,7 +23,7 @@
                         </div>
                     </div>
 
-                    <div class="row form-group">
+                    <div id="furniture_set_select" class="row form-group" style="display:none;">
                         <div class="col-md-6">
                             <input type="radio" id="fs_chic" value="1" name="furniture_set" class="radio-image" />
                             <label for="fs_chic">シック</label>
@@ -46,7 +45,8 @@
 
                 <div class="modal-footer">
                     <button type="button" data-dismiss="modal" class="btn btn-white waves-effect waves-light">キャンセル</button>
-                    <button type="submit" class="btn btn-primary waves-effect waves-light">見積もりを出す</button>
+                    <button type="submit" id="furniture_set_submit" class="btn btn-primary waves-effect waves-light"
+                        disabled>見積もりを出す</button>
                 </div>
             </form>
         </div>
@@ -122,11 +122,6 @@
         </div>
     </div>
 </div>
-
-
-{{ var_dump($room) }}
-家具はレンタルする？ -> する/<a href="#">しない</a>
-家具のテイストは？ -> シック/<a href="{{ url('furniture_sets/1') }}">モノクロ</a>/ウッディ
 @endsection
 
 @section('script')
@@ -148,7 +143,26 @@
             touchSwipe: <?= count($room->images) > 1 ? 'true' : 'false' ?>
         });
 
-        $('input[name="furniture_request"]')
+        const form_action_url = $('#estimate_form').attr('action');
+
+        function isSubmit(that){
+            if ($(that).val() == "false" || $('input[name="furniture_set"]:checked').val()) $('#furniture_set_submit').removeAttr('disabled');
+            else $('#furniture_set_submit').attr('disabled', 'disabled');
+        };
+
+        $('input[name="furniture_request"]').change(function(){
+            if ($(this).val() == "true") $("#furniture_set_select").fadeIn(1000);
+            else {
+                $("#furniture_set_select").hide();
+            }
+            
+            isSubmit(this);
+        });
+        $('input[name="furniture_set"]').change(function(){
+            let id = $('input[name="furniture_set"]:checked').val();
+            if (id) $('#estimate_form').attr('action', form_action_url + "/" + id );
+            isSubmit(this);
+        })
     });
 </script>
 @endsection
