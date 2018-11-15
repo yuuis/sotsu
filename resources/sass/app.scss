@@ -12,3 +12,29 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+
+
+form {
+  input[type="radio"].radio-image{
+    display: none;
+
+    & + label.radio-image {
+      margin:10px;
+      display: inline-block;
+      background-image:url("../img/present.png");
+      background-repeat: no-repeat;
+      background-size:contain;
+      width: 100px;
+      height:100px;
+    }
+
+    &:checked + label.radio-image {
+      background-repeat: no-repeat;
+      background-size:contain;
+      width: 100px;
+      height:100px;
+      -webkit-filter: opacity(0.6);
+      filter: opacity(0.6);
+    }
+  }
+}

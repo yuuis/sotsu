@@ -80,7 +80,7 @@
                     <div class="display-tc">
                         <div class="row">
                             <div class="col-md-8 animate-box">
-                                <h1 class="no-margin">Our Services</h1>
+                                <h1 class="no-margin">お部屋を探します。</h1>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia facilis, accusamus
                                     iusto animi.</p>
                             </div>
@@ -96,12 +96,6 @@
     </div>
 </header>
 
-<form action="{{ url('rooms/search') }}" method="get">
-    都道府県: <input type="text" name="prefecture">
-    地域: <input type="text" name="rejon">
-    交通機関: <input type="text" name="transportation">
-    <input type="submit" value="検索する">
-</form>
 {{ var_dump($rooms) }}
 @endsection
 

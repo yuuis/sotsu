@@ -49,6 +49,9 @@
 	<link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
 
+	<!-- Slider Pro -->
+	<link rel="stylesheet" href="{{ asset('css/slider-pro.min.css') }}">
+
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
@@ -60,6 +63,9 @@
     <![endif]-->
 	<!-- jQuery -->
 	<script src="{{ asset('js/jquery.min.js') }}"></script>
+
+	@yield('style')
+
 </head>
 
 <body>
@@ -72,7 +78,7 @@
 
 				<div class="row">
 					<div class="col-sm-2 col-xs-12">
-						<div id="gtco-logo"><a href="index.html"><img src="images/logo.png" alt="Free HTML5 Website Template by FreeHTML5.co"></a></div>
+						<div id="gtco-logo"><a href="{{ url('/') }}"><img src="{{ url('images/logo.png') }}" alt="Free HTML5 Website Template by FreeHTML5.co"></a></div>
 					</div>
 					<div class="col-xs-10 text-right menu-1">
 						<ul>
@@ -176,6 +182,8 @@
 	<!-- Magnific Popup -->
 	<script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
 	<script src="{{ asset('js/magnific-popup-options.js') }}"></script>
+	<!-- Slider Pro -->
+	<script src="{{ asset('js/jquery.sliderPro.min.js') }}"></script>
 	<!-- Main -->
 	<script src="{{ asset('js/main.js') }}"></script>
 

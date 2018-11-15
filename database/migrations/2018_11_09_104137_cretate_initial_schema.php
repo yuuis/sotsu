@@ -41,7 +41,7 @@ class CretateInitialSchema extends Migration
         Schema::create('room_images', function (Blueprint $table) {
             $table->increments('id');
             $table->string('image_path');
-            $table->string('room_id');
+            $table->integer('room_id');
             $table->timestamps();
         });
 
@@ -107,7 +107,7 @@ class CretateInitialSchema extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->int('gender');
+            $table->integer('gender');
             $table->string('email');
             $table->string('phone_number');
             $table->timestamps();
