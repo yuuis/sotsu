@@ -39,7 +39,6 @@ class ReserveController extends Controller
 
         $validator = Validator::make($inputs, $rules, $messages);
         if ($validator->fails()) {
-            // return redirect()->back()->withErrors($validator)->withInput();
             return redirect()->back()->withErrors($validator)->withInput();
         } else {
             $reserve = new Reserve();
