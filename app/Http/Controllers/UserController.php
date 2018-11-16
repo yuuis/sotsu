@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function create(Request $request)
     {
-        return view("users.create", compact($request));
+        return view("users.create", compact("request"));
     }
 
     public function store(Request $request)
@@ -23,11 +23,11 @@ class UserController extends Controller
             "gender" => "required"
         ];
         $messages = [
-            "inputName.required" => "名前を入力してください",
-            "inputEmail.required" => "メールアドレスを入力してください",
-            "inputEmail.email" => "メールアドレスを正しく入力してください",
-            "inputPhoneNumber.required" => "電話番号を入力してください",
-            "gender" => "性別を入力してください"
+            "name.required" => "名前を入力してください",
+            "email.required" => "メールアドレスを入力してください",
+            "email.email" => "メールアドレスを正しく入力してください",
+            "phone.required" => "電話番号を入力してください",
+            "gender.required" => "性別を選択してください"
         ];
 
         $validator = Validator::make($inputs, $rules, $messages);
@@ -44,8 +44,11 @@ class UserController extends Controller
             ];
             $user->fill($form);
 
+            $datas['room_id'] = $request->room_id;
+            $datas['furniture_set_id'] = $request->furniture_set_id;
+
             if ($user->save()) {
-                return view("reserves.create", compact("user"));
+                return view("reserves.create", compact("user", "datas"));
             } else {
                 return back()->withinput();
             }

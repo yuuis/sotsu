@@ -12,7 +12,8 @@
 
         <div class="row">
             <div class="col-md-12">
-                3D表示
+                <iframe id="inlineFrameExample" title="Inline Frame Example" width="100%" height="640px" src="{{ url('simulator/dist/index.html') }}">
+                </iframe>
             </div>
             <div class="col-md-12" style="margin-top:30px;">
                 <table class="table">

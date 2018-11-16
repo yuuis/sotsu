@@ -154,9 +154,9 @@
         $('input[name="furniture_request"]').change(function(){
             if ($(this).val() == "true") $("#furniture_set_select").fadeIn(1000);
             else {
+                $('#estimate_form').attr('action', "{{ url('users/create') }}" );
                 $("#furniture_set_select").hide();
             }
-            
             isSubmit(this);
         });
         $('input[name="furniture_set"]').change(function(){
@@ -177,7 +177,8 @@
     input[type="radio"].radio-image+label {
         margin: 10px;
         display: inline-block;
-        background-image: url("../img/present.png");
+        background-image:
+            url("../img/present.png");
         background-repeat: no-repeat;
         background-size: contain;
         width: 100%;
@@ -202,5 +203,4 @@
         left: 0;
         content: ' ';
     }
-</style>
-@endsection
+</style> @endsection

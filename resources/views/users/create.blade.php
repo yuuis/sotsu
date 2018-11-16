@@ -1,16 +1,5 @@
 @extends('layouts.app')
 
-@section('contents2')
-<form action="{{ url('users') }}" method="post">
-	{{ csrf_field() }}
-	お名前: <input type="text" name="name">
-	Email: <input type="email" name="email">
-	phone: <input type="text" name="phone">
-	性別: <input type="text" , name="gender">
-	<input type="submit" value="会員登録して部屋を借りる">
-	<a href="#">登録済みの方はこちら</a>
-</form>
-@endsection
 
 @section('contents')
 
@@ -40,43 +29,81 @@
 			<form action="{{ url('users') }}" method="POST">
 				{{ csrf_field() }}
 				<div class="modal-body">
-					<div class="row form-group">
+					<div class="row form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 						<div class="col-md-4">
 							<label for="user_name">お名前</label>
 						</div>
 						<div class="col-md-8 ml-auto">
-							<input type="text" class="form-control" id="user_name" require>
+							<input type="text" class="form-control" name="name" id="user_name" value="{{ old('name') }}" require>
+							@if ($errors->has('name'))
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $errors->first('name') }}</strong>
+							</span>
+							@endif
 						</div>
 					</div>
 					<br>
-					<div class="row form-group">
+					<div class="row form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 						<div class="col-md-4">
 							<label for="user_email">Email</label>
 						</div>
 						<div class="col-md-8 ml-auto">
-							<input type="mail" class="form-control" id="user_email" placeholder="sample@example.com" require>
+							<input type="mail" class="form-control" name="email" id="user_email" placeholder="sample@example.com" value="{{ old('email') }}"
+							 require>
+							@if ($errors->has('email'))
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $errors->first('email') }}</strong>
+							</span>
+							@endif
 						</div>
 					</div>
 					<br>
-					<div class="row form-group">
+					<div class="row form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
 						<div class="col-md-4">
 							<label for="user_phone">Phone</label>
 						</div>
 						<div class="col-md-8 ml-auto">
-							<input type="phone" class="form-control" id="user_phone" placeholder="000-0000-0000" require>
+							<input type="phone" class="form-control" name="phone" id="user_phone" placeholder="000-0000-0000" value="{{ old('phone') }}"
+							 require>
+							@if ($errors->has('phone'))
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $errors->first('phone') }}</strong>
+							</span>
+							@endif
 						</div>
 					</div>
-					<div class="row form-group">
+					<div class="row form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
 						<div class="col-md-4">
-							<label for="user_gender">Gender</label>
+							<label>Gender</label>
 						</div>
-						<div class="col-md-8 ml-auto checkbox">
-							<input type="checkbox" class="form-control" id="user_phone" require>
+						<div class="col-md-8 ml-auto">
+							<div class="radio">
+								<label for="user_gender_man">
+									<input type="radio" name="gender" id="user_gender_man" value="1" @if(old('gender')=="1" ) checked @endif> 男性
+								</label>
+							</div>
+							<div class="radio">
+								<label for="user_gender_woman">
+									<input type="radio" name="gender" id="user_gender_woman" value="2" @if(old('gender')=="2" ) checked @endif> 女性
+								</label>
+							</div>
+							<div class="radio">
+								<label for="user_gender_other">
+									<input type="radio" name="gender" id="user_gender_other" value="3" @if(old('gender')=="3" ) checked @endif>
+									その他
+								</label>
+							</div>
+							@if ($errors->has('gender'))
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $errors->first('gender') }}</strong>
+							</span>
+							@endif
 						</div>
 					</div>
 					<br>
 				</div>
-
+				<input type="hidden" name="room_id" value="{{ $request->room_id }}">
+				<input type="hidden" name="furniture_set_id" value="@if(isset($request['furniture_set_id'])){{$request->furniture_set_id}}@endif">
 				<div class="modal-footer">
 					<button type="submit" class="btn btn-primary waves-effect waves-light">会員登録</button>
 				</div>
@@ -87,58 +114,9 @@
 @endsection
 
 @section('script')
-<script src="{{ asset('js/japan_map_data.js') }}"></script>
 <script type="text/javascript">
-	const maps = new JapanMapData();
-
-	const areas = maps.getArea();
-	const prefectures = maps.getPrefectures();
-
-	areas.forEach(function(area) {
-		$('#select_area').append($("<option value='" + area + "'>" + area + "</option>"));
-	});
-
-	Object.keys(prefectures).forEach(function(key) {
-		$('#select_prefecture').append($("<option value='" + key + "' data-val='" + prefectures[key] + "'>" +
-			key + "</option>"));
-	});
-
 	$(function() {
-		var $prefectures_html = $('#select_prefecture');
-		var $municipality_html = $('#select_municipality');
-		var original = $prefectures_html.html();
 
-		$('#select_area').change(function() {
-			const val1 = $(this).val();
-			$prefectures_html.html(original).find('option').each(function() {
-				const val2 = $(this).data('val');
-				if (val1 != val2) {
-					$(this).not(':first-child').remove();
-				}
-			});
-			if ($(this).val() == "") {
-				$prefectures_html.attr('disabled', 'disabled');
-			} else {
-				$prefectures_html.removeAttr('disabled');
-			}
-		});
-
-		$('#select_prefecture').change(function() {
-			const val1 = $(this).val();
-			const municipality = maps.getMunicipality(val1);
-			$municipality_html.empty();
-			$municipality_html.append($('<option value="">市区町村を選択</option>'));
-			Object.keys(municipality).forEach(function(key) {
-				$municipality_html.append($("<option value='" + key + "' data-val='" +
-					municipality[key] + "'>" +
-					key + "</option>"));
-			});
-			if ($(this).val() == "") {
-				$municipality_html.attr('disabled', 'disabled');
-			} else {
-				$municipality_html.removeAttr('disabled');
-			}
-		});
 	});
 </script>
 @endsection

@@ -25,7 +25,7 @@ class ReserveController extends Controller
             "store.required" => "店舗を選択してください",
             "agree.required" => "利用規約に同意してください"
         ];
-
+        
         $validator = Validator::make($inputs, $rules, $messages);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
@@ -36,13 +36,13 @@ class ReserveController extends Controller
                 "store_id" => $request->input("store"),
             ];
             $user->fill($form);
-
+            dd("hoge");
             if ($user->save()) {
                 return view("thanks", compact("user"));
             } else {
                 return back()->withinput();
             }
-            Session::put("user", $user->id);
+            // Session::put("user", $user->id);
             return view("agreement");
         }
     }
