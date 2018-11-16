@@ -17,13 +17,22 @@ class ReserveController extends Controller
     {
         $inputs = $request->all();
         $rules = [
-            "date" => "required",
-            "store" => "required"
+            "user_id" => "required",
+            "room_id" => "required",
+            "store_id" => "required",
+            "set_id" => "required",
+            "enter_date" => "required",
+            "visit_datetime" => "required",
+            "confirm" => "required"
         ];
         $messages = [
-            "date.required" => "入居日を入力してください",
-            "store.required" => "店舗を選択してください",
-            "agree.required" => "利用規約に同意してください"
+            "user_id.required" => "user not specificated",
+            "room_id.required" => "room not specificated",
+            "store_id.required" => "店舗を選択してください",
+            "set_id.required" => "set not specificated",
+            "enter_date.required" => "入居日を入力してください",
+            "visit_date.required" => "来店日時を入力してください",
+            "confirm.required" => "利用規約に同意してください"
         ];
         
         $validator = Validator::make($inputs, $rules, $messages);
@@ -32,18 +41,19 @@ class ReserveController extends Controller
         } else {
             $reserve = new Reserve();
             $form = [
-                "date" => $request->input("date"),
-                "store_id" => $request->input("store"),
+                "user_id" => $request->input("user_id"),
+                "room_id" => $request->input("room_id"),
+                "store_id" => $request->input("store_id"),
+                "furniture_set_id" => $request->input("set_id"),
+                "enter_date" => $request->input("enter_date"),
+                "visit_date" => $request->input("visit_datetime"),
             ];
-            $user->fill($form);
-            dd("hoge");
-            if ($user->save()) {
+            $reserve->fill($form);
+            if ($reserve->save()) {
                 return view("thanks", compact("user"));
             } else {
                 return back()->withinput();
             }
-            // Session::put("user", $user->id);
-            return view("agreement");
         }
     }
 }
