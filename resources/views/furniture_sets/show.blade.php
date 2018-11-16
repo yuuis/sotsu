@@ -23,7 +23,7 @@
                         </tr>
                         @foreach ($set->furnitures as $furniture)
                         <tr>
-                            <td rowspan="3"><img src="{{ url($furniture->images) }}" alt=""></td>
+                            <td rowspan="3"><img src="{{ url($furniture->images[0]->image_path) }}" alt=""></td>
                             <td colspan="2">{{ $furniture->name }}</td>
                         </tr>
                         <tr>
