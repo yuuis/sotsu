@@ -102,8 +102,6 @@
 					</div>
 					<br>
 				</div>
-				<input type="hidden" name="room_id" value="{{ $request->room_id }}">
-				<input type="hidden" name="furniture_set_id" value="@if(isset($request['furniture_set_id'])){{$request->furniture_set_id}}@endif">
 				<div class="modal-footer">
 					<button type="submit" class="btn btn-primary waves-effect waves-light">会員登録</button>
 				</div>

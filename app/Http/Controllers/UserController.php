@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Validator;
 use App\Http\Models\User;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -44,11 +45,9 @@ class UserController extends Controller
             ];
             $user->fill($form);
 
-            $datas['room_id'] = $request->room_id;
-            $datas['furniture_set_id'] = $request->furniture_set_id;
-
             if ($user->save()) {
-                return view("reserves.create", compact("user", "datas"));
+                Session::put("user_id", $user->id);
+                return redirect("/reserves/create");
             } else {
                 return back()->withinput();
             }

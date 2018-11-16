@@ -163,7 +163,15 @@
             let id = $('input[name="furniture_set"]:checked').val();
             if (id) $('#estimate_form').attr('action', form_action_url + "/" + id );
             isSubmit(this);
-        })
+        });
+
+        $('#estimate_form').submit(function(){
+            let session_data = {
+                "room_id":  $('input[name="room_id"]').val(),
+                "furniture_set_id": $('input[name="furniture_set"]').val()
+            };
+            sessionStorage.setItem('session_data', JSON.stringify(session_data));
+        });
     });
 </script>
 @endsection

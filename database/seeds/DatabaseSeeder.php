@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(FurnitureImageTableSeeder::class);
         $this->call(FurnitureSetTableSeeder::class);
         $this->call(FurnitureFunitureSetTableSeeder::class);
+        $this->call(StoreTableSeeder::class);
     }
 }
