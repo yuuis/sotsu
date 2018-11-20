@@ -12,9 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('top');
 });
 
-Route::get('/app', function () {
-    return view('index');
-});
+Route::get("rooms/search", ["as" => "rooms.search", "uses" => "RoomController@search"]);
+Route::resource("rooms", "RoomController", ["only" => ["index", "show"]]);
+// Route::resource("furnitures", "FurnitureController", ["only" => ["index", "show"]]);
+Route::resource("reserves", "ReserveController", ["only" => ["create", "store"]]);
+Route::resource("furniture_sets", "FurnitureSetController", ["only" => ["show"]]);
+Route::resource("users", "UserController", ["only" => ["create", "store"]]);

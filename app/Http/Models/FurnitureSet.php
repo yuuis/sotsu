@@ -8,6 +8,11 @@ class FurnitureSet extends Model
 {
     public function furnitures()
     {
-        return $this->belongsToMany('App\Http\Models\Furniture');
+        return $this->belongsToMany('App\Http\Models\Furnitures');
+    }
+
+    public function fsfPath(Int $roomId)
+    {
+        return \DB::select("SELECT fsf_path FROM room_furniture_set WHERE room_id = ? and furniture_set_id = ?", [$roomId, $this->id]);
     }
 }

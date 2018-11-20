@@ -41,7 +41,7 @@ class CretateInitialSchema extends Migration
         Schema::create('room_images', function (Blueprint $table) {
             $table->increments('id');
             $table->string('image_path');
-            $table->string('room_id');
+            $table->integer('room_id');
             $table->timestamps();
         });
 
@@ -60,7 +60,7 @@ class CretateInitialSchema extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('price');
-            $table->string('futniture_category_id');
+            $table->string('furniture_category_id');
             $table->timestamps();
         });
 
@@ -75,7 +75,7 @@ class CretateInitialSchema extends Migration
         Schema::create('furniture_images', function (Blueprint $table) {
             $table->increments('id');
             $table->string('image_path');
-            $table->string('furniture_id');
+            $table->string('furnitures_id');
             $table->timestamps();
         });
 
@@ -87,9 +87,9 @@ class CretateInitialSchema extends Migration
         });
 
         // 家具と家具セットの中間テーブル
-        Schema::create('furniture_furniture_set', function (Blueprint $table) {
+        Schema::create('furniture_set_furnitures', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('furniture_id');
+            $table->string('furnitures_id');
             $table->string('furniture_set_id');
             $table->timestamps();
         });
@@ -107,7 +107,7 @@ class CretateInitialSchema extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('gender');
+            $table->integer('gender');
             $table->string('email');
             $table->string('phone_number');
             $table->timestamps();
@@ -120,7 +120,8 @@ class CretateInitialSchema extends Migration
             $table->string('room_id');
             $table->string('store_id');
             $table->string('furniture_set_id');
-            $table->datetime('reserve_time');
+            $table->date('enter_date');
+            $table->datetime('visit_datetime');
             $table->timestamps();
         });
     }
@@ -141,7 +142,7 @@ class CretateInitialSchema extends Migration
         Schema::dropIfExists('furniture_categories');
         Schema::dropIfExists('furniture_images');
         Schema::dropIfExists('furniture_sets');
-        Schema::dropIfExists('furniture_furniture_set');
+        Schema::dropIfExists('furniture_set_furnitures');
         Schema::dropIfExists('room_furniture_set');
         Schema::dropIfExists('users');
         Schema::dropIfExists('reserves');

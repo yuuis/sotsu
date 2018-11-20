@@ -20,4 +20,10 @@ class Room extends Model
     {
         return $this->hasMany('App\Http\Models\FurnitureSet');
     }
+
+    public static function search(String $prefecture, String $municipality, $options)
+    {
+        // 仮で全部返してる。検索どうするか相談したい
+        return Room::all();
+    }
 }

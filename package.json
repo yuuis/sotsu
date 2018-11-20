@@ -20,6 +20,7 @@
         "vue": "^2.5.17"
     },
     "dependencies": {
-        "loadsh": "0.0.3"
+        "loadsh": "0.0.3",
+        "mdbootstrap": "^4.5.14"
     }
 }
