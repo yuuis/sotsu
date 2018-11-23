@@ -59,7 +59,8 @@ class CretateInitialSchema extends Migration
         Schema::create('furnitures', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('price');
+            $table->integer('purchase_price');
+            $table->integer('rental_price');
             $table->string('furniture_category_id');
             $table->timestamps();
         });
