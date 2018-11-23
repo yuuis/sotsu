@@ -24,12 +24,16 @@
                         </tr>
                         @foreach ($set->furnitures as $furniture)
                         <tr>
-                            <td rowspan="2"><img src="{{ url($furniture->images[0]->image_path) }}" alt="" width="100%"></td>
+                            <td rowspan="3"><img src="{{ url($furniture->images[0]->image_path) }}" alt="" width="100%"></td>
                             <td colspan="2">{{ $furniture->name }}</td>
                         </tr>
                         <tr>
-                            <td>値段</td>
-                            <td>{{ $furniture->price }}円</td>
+                            <td>レンタル価格</td>
+                            <td>{{ $furniture->rental_price }}円/月</td>
+                        </tr>
+                        <tr>
+                            <td>購入価格</td>
+                            <td>{{ $furniture->purchase_price }}円</td>
                         </tr>
                         @endforeach
                     </tbody>
