@@ -11,9 +11,10 @@ class EstateCompanyTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table("companies")->insert([
+        DB::table("estate_companies")->insert([
             "name" => "ねこ不動産",
-            "homepage" => "http://cat-hudosan.com"
+            "homepage" => "http://cat-hudosan.com",
+            "phone_number" => "02022000022"
         ]);
     }
 }
