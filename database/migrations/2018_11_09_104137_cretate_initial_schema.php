@@ -14,10 +14,11 @@ class CretateInitialSchema extends Migration
     public function up()
     {
         // 不動産会社
-        Schema::create('companies', function (Blueprint $table) {
+        Schema::create('estate_companies', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('homepage');
+            $table->string('phone_number');
             $table->timestamps();
         });
 
@@ -34,6 +35,7 @@ class CretateInitialSchema extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('address');
+            $table->string('floor_plan');
             $table->timestamps();
         });
 
@@ -51,6 +53,7 @@ class CretateInitialSchema extends Migration
             $table->string('name');
             $table->string('address');
             $table->string('open_time');
+            $table->string('close_time');
             $table->string('open_day');
             $table->timestamps();
         });
@@ -62,6 +65,9 @@ class CretateInitialSchema extends Migration
             $table->integer('purchase_price');
             $table->integer('rental_price');
             $table->string('furniture_category_id');
+            $table->integer('height');
+            $table->integer('width');
+            $table->integer('length');
             $table->timestamps();
         });
 
@@ -111,6 +117,8 @@ class CretateInitialSchema extends Migration
             $table->integer('gender');
             $table->string('email');
             $table->string('phone_number');
+            $table->string('credit_card');
+            $table->string('expired_date');
             $table->timestamps();
         });
 
@@ -124,6 +132,45 @@ class CretateInitialSchema extends Migration
             $table->date('enter_date');
             $table->datetime('visit_datetime');
             $table->timestamps();
+        });
+
+        Schema::create('moving_companies', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('homepage');
+            $table->string('address');
+            $table->string('phone_number');
+            $table->timestamps();
+        });
+
+        Schema::create('deliver_companies', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('homepage');
+            $table->string('address');
+            $table->string('phone_number');
+            $table->timestamps();
+        });
+
+        Schema::create('furniture_company', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('homepage');
+            $table->string('address');
+            $table->string('phone_number');
+            $table->timestamps();
+        });
+
+        Schema::create('moving_storehouse', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('address');
+            $table->string('phone_number');
+            $table->timestamps();
+        });
+
+        Schema::create('tags', function (Blueprint $table) {
+            
         });
     }
 
