@@ -23,9 +23,9 @@ class CretateInitialSchema extends Migration
         });
 
         // 不動産と部屋の中間テーブル
-        Schema::create('company_room', function (Blueprint $table) {
+        Schema::create('estate_company_room', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('company_id');
+            $table->string('estate_company_id');
             $table->string('room_id');
             $table->timestamps();
         });
@@ -134,6 +134,7 @@ class CretateInitialSchema extends Migration
             $table->timestamps();
         });
 
+        // 引越し業者
         Schema::create('moving_companies', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
@@ -143,6 +144,7 @@ class CretateInitialSchema extends Migration
             $table->timestamps();
         });
 
+        // 配送業者
         Schema::create('deliver_companies', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
@@ -152,7 +154,8 @@ class CretateInitialSchema extends Migration
             $table->timestamps();
         });
 
-        Schema::create('furniture_company', function (Blueprint $table) {
+        // 家具業者
+        Schema::create('furniture_companies', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('homepage');
@@ -161,7 +164,8 @@ class CretateInitialSchema extends Migration
             $table->timestamps();
         });
 
-        Schema::create('moving_storehouse', function (Blueprint $table) {
+        // 家具倉庫
+        Schema::create('moving_storehouses', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('address');
@@ -169,8 +173,16 @@ class CretateInitialSchema extends Migration
             $table->timestamps();
         });
 
+        // 部屋の属性タグ
         Schema::create('tags', function (Blueprint $table) {
-            
+            $table->increments('id');
+            $table->string('name');
+        });
+
+        Schema::create('tag_furnitures', function(Blueprint $table) {
+            $table->increments('id');
+            $table->string('tag_id');
+            $table->string('furniture_id');
         });
     }
 
@@ -194,5 +206,10 @@ class CretateInitialSchema extends Migration
         Schema::dropIfExists('room_furniture_set');
         Schema::dropIfExists('users');
         Schema::dropIfExists('reserves');
+        Schema::dropIfExists('moving_companies');
+        Schema::dropIfExists('deliver_companies');
+        Schema::dropIfExists('furniture_company');
+        Schema::dropIfExists('tags');
+        Schema::dropIfExists('tag_furnitures');
     }
 }
