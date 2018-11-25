@@ -179,6 +179,7 @@ class CretateInitialSchema extends Migration
             $table->string('name');
         });
 
+        // 部屋とタグの中間テーブル
         Schema::create('tag_furnitures', function(Blueprint $table) {
             $table->increments('id');
             $table->string('tag_id');
