@@ -16,9 +16,9 @@ Main Page
                                 <img src="images/cube.png" alt="Free HTML5 Website Template by FreeHTML5.co">
                             </div>
                             <div class="col-md-7 copy animate-box">
-                                <h1>売り文句</h1>
-                                <p>超イケイケのサービスですっせ</p>
-                                <p><a href="{{url('rooms')}}" class="btn btn-white">お店を探してみる</a></p>
+                                <h1>引越しを楽に</h1>
+                                <p>引越しの全てがここで済みます。</p>
+                                <p><a href="{{url('rooms')}}" class="btn btn-white">お部屋を探してみる</a></p>
                             </div>
                         </div>
                     </div>
@@ -33,8 +33,8 @@ Main Page
 
         <div class="row row-pb-sm">
             <div class="col-md-8 col-md-offset-2 gtco-heading text-center">
-                <h2>かっこいい見出し</h2>
-                <p>こんな感じの流れですよ</p>
+                <h2>Sotsuの引越しの流れ</h2>
+                <p>引越しまでは4ステップです</p>
             </div>
         </div>
 
@@ -43,7 +43,8 @@ Main Page
                 <div class="gtco-testimony gtco-left">
                     <div><img src="images/person_1.jpg" alt="Free Website template by FreeHTML5.co"></div>
                     <blockquote>
-                        <p>まずは家を決めましょう</p>
+                        <h2>お部屋を決める</h2>
+                        <p>まずはお部屋を決めましょう。xxx件以上のお部屋が掲載されています。</p>
                     </blockquote>
                 </div>
             </div>
@@ -52,7 +53,8 @@ Main Page
                 <div class="gtco-testimony gtco-left">
                     <div><img src="images/person_1.jpg" alt="Free Website template by FreeHTML5.co"></div>
                     <blockquote>
-                        <p>そんで家具決めましょう</p>
+                        <h2>レンタルする家具を決める</h2>
+                        <p>Sotsuでは家具をレンタルすることができます。家具をレンタルすると、新しく家具を買う必要もなければ、次の引越しの時に持ち帰る必要もありません。</p>
                     </blockquote>
                 </div>
             </div>
@@ -61,7 +63,8 @@ Main Page
                 <div class="gtco-testimony gtco-left">
                     <div><img src="images/person_1.jpg" alt="Free Website template by FreeHTML5.co"></div>
                     <blockquote>
-                        <p>内見日を決めて、お店へ</p>
+                        <h2>お店にって契約をする</h2>
+                        <p>実際にお店に行って内見をしましょう。実際にお部屋を見て気に入ったなら契約をします。</p>
                     </blockquote>
                 </div>
             </div>
@@ -70,7 +73,8 @@ Main Page
                 <div class="gtco-testimony gtco-left">
                     <div><img src="images/person_1.jpg" alt="Free Website template by FreeHTML5.co"></div>
                     <blockquote>
-                        <p>契約終了後、宅配業者が内装通りに家具を運んでくれます</p>
+                        <h2>入居する</h2>
+                        <p>入居日には、家具が配置された状態のお部屋があなたを待っています。</p>
                     </blockquote>
                 </div>
             </div>
@@ -81,13 +85,12 @@ Main Page
     <div class="gtco-container">
         <div class="row row-pb-sm">
             <div class="col-md-8 col-md-offset-2 text-center">
-                <h2>実際に探してみよう</h2>
-                <p>みようみよう</p>
+                <h2>実際にお部屋を探してみましょう</h2>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 text-center">
-                <p><a href="" target="_blank" class="btn btn-special">お部屋を探す</a></p>
+                <p><a href="" target="_blank" class="btn btn-special">お部屋を探してみる</a></p>
             </div>
         </div>
     </div>

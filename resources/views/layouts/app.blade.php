@@ -8,7 +8,7 @@
 	<!-- CSRF Token -->
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
-	<title>Laravel | @yield('title', 'Home')</title>
+	<title>Sotsu | @yield('title', 'Home')</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
 	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -119,7 +119,7 @@
 				<div class="row row-pb-md">
 					<div class="col-md-4 gtco-widget gtco-footer-paragraph">
 						<h3>sotsu</h3>
-						<p>イケイケサービス</p>
+						<p>sotsu</p>
 					</div>
 					<div class="col-md-4 gtco-footer-link">
 						<div class="row">
