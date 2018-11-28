@@ -6,7 +6,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="gridModalLabel">部屋を探そう</h4>
+                <h4 class="modal-title" id="gridModalLabel">部屋を探す</h4>
             </div>
             <form action="{{ url('rooms/search') }}" method="GET" class="container-fluid">
 
@@ -79,9 +79,7 @@
                     <div class="display-tc">
                         <div class="row">
                             <div class="col-md-12 animate-box">
-                                <h1 class="no-margin">お部屋を探します。</h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia facilis, accusamus
-                                    iusto animi.</p>
+                                <h1 class="no-margin">お部屋を探しましょう</h1>
                                 <p class="text-right"><button data-toggle="modal" data-target="#modalSearchForm" class="btn btn-white">別の条件で探す</button></p>
                             </div>
                         </div>
@@ -97,8 +95,8 @@
 
         <div class="row row-pb-slim">
             <div class="col-md-8 col-md-offset-2 gtco-heading text-center">
-                <h2>かっこいい見出し</h2>
-                <p>こんな感じの流れですよ</p>
+                <h2>[検索条件]のお部屋一覧</h2>
+                <p>xxx件のお部屋が見つかりました</p>
             </div>
         </div>
 
@@ -130,7 +128,7 @@
                             </tbody>
                         </table>
                         <p class="text-right">
-                            <a href="{{ url('rooms/'.$room->id ) }}" class="btn btn-white">ここにする</a>
+                            <a href="{{ url('rooms/'.$room->id ) }}" class="btn btn-white">詳細</a>
                         </p>
                     </div>
                 </div>

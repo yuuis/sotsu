@@ -7,7 +7,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="gridModalLabel">部屋を探そう</h4>
+                <h4 class="modal-title" id="gridModalLabel">お部屋を探す</h4>
             </div>
             <form action="{{ url('rooms/search') }}" method="GET" class="container-fluid">
 

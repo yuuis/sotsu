@@ -12,7 +12,8 @@
             <form id="estimate_form" action="{{ url('furniture_sets/') }}" method="GET" class="container-fluid">
                 <input type="hidden" name="room_id" value="{{ $room->id }}">
                 <div class="modal-body">
-                    <p>お部屋の家具も一緒にチョイスすることで、引っ越し時にお部屋に設置いたします。</p>
+                    <!-- <p>お部屋の家具も一緒にチョイスすることで、引っ越し時にお部屋に設置いたします。</p> -->
+                    <p>Sotsuでは、家具のレンタルを行なっています。家具をレンタルすると、入居日には家具の備わったお部屋で新生活を始めることができます。</p>
                     <div class="row form-group">
                         <div class="col-md-6">
                             <input type="radio" id="require" name="furniture_request" value="true" class="radio-image" />
@@ -47,7 +48,7 @@
                 <div class="modal-footer">
                     <button type="button" data-dismiss="modal" class="btn btn-white waves-effect waves-light">キャンセル</button>
                     <button type="submit" id="furniture_set_submit" class="btn btn-primary waves-effect waves-light"
-                        disabled>見積もりを出す</button>
+                        disabled>確認する</button>
                 </div>
             </form>
         </div>
@@ -73,17 +74,17 @@
 
                             <p class="sp-layer sp-white sp-padding" data-horizontal="50" data-vertical="50"
                                 data-show-transition="left" data-show-delay="400">
-                                タグを
+                                駅近
                             </p>
 
                             <p class="sp-layer sp-black sp-padding" data-horizontal="180" data-vertical="50"
                                 data-show-transition="left" data-show-delay="600">
-                                ここら辺に
+                                マンションタイプ
                             </p>
 
                             <p class="sp-layer sp-white sp-padding" data-horizontal="315" data-vertical="50"
                                 data-show-transition="left" data-show-delay="800">
-                                表示させるのはいかがでしょう
+                                バストイレ別
                             </p>
                         </div>
                         @endforeach
