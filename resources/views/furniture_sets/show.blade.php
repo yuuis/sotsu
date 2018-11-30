@@ -6,7 +6,7 @@
 
         <div class="row row-pb-slim">
             <div class="col-md-10 gtco-heading text-left">
-                <h2>お部屋イメージ</h2>
+                <h2>お部屋イメージ[テイスト]</h2>
             </div>
         </div>
 
