@@ -6,7 +6,7 @@
 
         <div class="row row-pb-slim">
             <div class="col-md-10 gtco-heading text-left">
-                <h2>〜の部屋</h2>
+                <h2>お部屋イメージ[テイスト]</h2>
             </div>
         </div>
 
@@ -19,7 +19,7 @@
                 <table class="table">
                     <tbody>
                         <tr>
-                            <th width="20%">イメージ</th>
+                            <th width="20%">画像</th>
                             <th colspan="2">概要</th>
                         </tr>
                         @foreach ($set->furnitures as $furniture)
@@ -42,7 +42,7 @@
                     <input type="hidden" name="room_id" value="{{ $room_id }}">
                     <input type="hidden" name="furniture_set_id" value="{{ $set->id }}">
                     <p class="text-center">
-                        <button type="submit" class="btn btn-primary">家具をレンタルする</button>
+                        <button type="submit" class="btn btn-primary">この家具をレンタルする</button>
                     </p>
                 </form>
             </div>

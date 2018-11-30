@@ -79,14 +79,14 @@
 					<br>
 					<div class="row">
 						<div class="col-md-4">
-							<label>注意事項</label>
+							<label>注意事項/免責</label>
 						</div>
 						<div class="col-md-8 ml-auto">
 							<div class="well scrollable">
 								契約内容<br>
-								・まだ決まってないからね。<br>
+								・お部屋の契約はまだ完了していません。不動産店舗に行ってな意見をしてからきめてください。<br>
 								入居日<br>
-								・入居日はあくまで目安だから、確実に抑えられるわけちゃうで。<br>
+								・入居日はあくまで目安です。<br>
 								免責事項<br>
 								・我々は責任をとりません。
 							</div>
@@ -94,7 +94,7 @@
 					</div>
 					<div class="row form-group{{ $errors->has('confirm') ? ' has-error' : '' }}">
 						<div class="col-md-4">
-							<label>同意してください</label>
+							<label>上記の注意事項をよく読み、同意してください</label>
 						</div>
 						<div class="col-md-8 ml-auto">
 							<div class="radio">

@@ -11,9 +11,7 @@
 					<div class="display-tin">
 						<div class="row">
 							<div class="col-md-12 animate-box">
-								<h1 class="no-margin">お客様の情報</h1>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia facilis, accusamus
-									iusto animi.</p>
+								<h1 class="no-margin">お客様の情報を入力してください</h1>
 							</div>
 						</div>
 					</div>
@@ -45,7 +43,7 @@
 					<br>
 					<div class="row form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 						<div class="col-md-4">
-							<label for="user_email">Email</label>
+							<label for="user_email">メールアドレス</label>
 						</div>
 						<div class="col-md-8 ml-auto">
 							<input type="mail" class="form-control" name="email" id="user_email" placeholder="sample@example.com" value="{{ old('email') }}"
@@ -60,7 +58,7 @@
 					<br>
 					<div class="row form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
 						<div class="col-md-4">
-							<label for="user_phone">Phone</label>
+							<label for="user_phone">電話番号</label>
 						</div>
 						<div class="col-md-8 ml-auto">
 							<input type="phone" class="form-control" name="phone" id="user_phone" placeholder="000-0000-0000" value="{{ old('phone') }}"
@@ -74,7 +72,7 @@
 					</div>
 					<div class="row form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
 						<div class="col-md-4">
-							<label>Gender</label>
+							<label>性別</label>
 						</div>
 						<div class="col-md-8 ml-auto">
 							<div class="radio">
@@ -103,7 +101,7 @@
 					<br>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary waves-effect waves-light">会員登録</button>
+					<button type="submit" class="btn btn-primary waves-effect waves-light">アカウント登録</button>
 				</div>
 			</form>
 		</div>
