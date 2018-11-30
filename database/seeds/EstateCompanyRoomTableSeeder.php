@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class CompanyRoomTableSeeder extends Seeder
+class EstateCompanyRoomTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,7 @@ class CompanyRoomTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table("company_room")->insert([
+        DB::table("estate_company_room")->insert([
             "company_id" => 1,
             "room_id" => 1
         ]);
