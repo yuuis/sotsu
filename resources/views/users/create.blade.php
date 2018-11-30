@@ -142,7 +142,7 @@
 			},
 			placeholders: {
 				number: '**** **** **** ****',
-				name: 'Neko Nekomura',
+				name: 'Neco Necomura',
 				expiry: '**/****',
 				cvc: '***'
 			},
