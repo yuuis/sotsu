@@ -142,7 +142,7 @@
 			},
 			placeholders: {
 				number: '**** **** **** ****',
-				name: 'Sotsu Ikeike',
+				name: 'Neko Nekomura',
 				expiry: '**/****',
 				cvc: '***'
 			},
