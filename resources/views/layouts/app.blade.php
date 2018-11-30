@@ -80,7 +80,7 @@
 					<div class="col-sm-2 col-xs-12">
 						<div id="gtco-logo"><a href="{{ url('/') }}"><img src="{{ url('images/logo.png') }}" alt="Free HTML5 Website Template by FreeHTML5.co"></a></div>
 					</div>
-					<div class="col-xs-10 text-right menu-1">
+					<!-- <div class="col-xs-10 text-right menu-1">
 						<ul>
 							<li><a href="{{ url('/') }}">Home</a></li>
 							<li><a href="about.html">About</a></li>
@@ -105,7 +105,7 @@
 							<li><a href="portfolio.html">Portfolio</a></li>
 							<li><a href="contact.html">Contact</a></li>
 						</ul>
-					</div>
+					</div> -->
 				</div>
 
 			</div>
@@ -123,7 +123,7 @@
 					</div>
 					<div class="col-md-4 gtco-footer-link">
 						<div class="row">
-							<div class="col-md-6">
+							<!-- <div class="col-md-6">
 								<ul class="gtco-list-link">
 									<li><a href="{{ url('/') }}">Home</a></li>
 									<li><a href="#">Features</a></li>
@@ -131,7 +131,7 @@
 									<li><a href="#">Testimonial</a></li>
 									<li><a href="#">Contact</a></li>
 								</ul>
-							</div>
+							</div> -->
 							<div class="col-md-6">
 								<p>
 									<a href="#">mail@mail.com</a>
