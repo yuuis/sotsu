@@ -13,11 +13,86 @@ class CretateInitialSchema extends Migration
      */
     public function up()
     {
-        // 不動産会社
-        Schema::create('estate_companies', function (Blueprint $table) {
+        // 会社の基本情報
+        Schema::create('companies', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('homepage');
+            $table->string('phone_number');
+            $table->string('address');
+            $table->string('leader_name');
+            $table->timestamps();
+        });
+
+        // 会社の役割
+        // 1: 不動産, 2: 家具, 3: 引越し, 4: 配送, 5: 家具設置
+        Schema::create('compnay_roles', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('company_id');
+            $table->integer('role');
+            $table->timestamps();
+        });
+
+        // 不動産会社の個別情報
+        Schema::create('estate_items', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('company_id');
+            $table->timestamps();
+        });
+
+        // 不動産業者のview
+        DB::statement('DROP VIEW IF EXISTS estate_companies');
+        DB::statement("CREATE VIEW estate_companies AS SELECT companies.id, companies.name, companies.homepage, companies.phone_number, companies.address, companies.leader_name FROM companies INNER JOIN estate_items ON (companies.id = estate_items.company_id)");
+
+        // 引越し業者の個別情報
+        Schema::create('moving_items', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('company_id');
+            $table->timestamps();
+        });
+
+        // 引越し業者会社のview
+        DB::statement('DROP VIEW IF EXISTS moving_companies');
+        DB::statement("CREATE VIEW moving_companies AS SELECT companies.id, companies.name, companies.homepage, companies.phone_number, companies.address, companies.leader_name FROM companies INNER JOIN moving_items ON (companies.id = moving_items.company_id)");
+
+        // 配送業者の個別情報
+        Schema::create('deliver_items', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('company_id');
+            $table->timestamps();
+        });
+
+        // 配送業者会社のview
+        DB::statement('DROP VIEW IF EXISTS deliver_companies');
+        DB::statement("CREATE VIEW deliver_companies AS SELECT companies.id, companies.name, companies.homepage, companies.phone_number, companies.address, companies.leader_name FROM companies INNER JOIN deliver_items ON (companies.id = deliver_items.company_id)");
+
+        // 家具業者の個別情報
+        Schema::create('furniture_items', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('company_id');
+            $table->timestamps();
+        });
+
+        // 家具業者会社のview
+        DB::statement('DROP VIEW IF EXISTS furniture_companies');
+        DB::statement("CREATE VIEW furniture_companies AS SELECT companies.id, companies.name, companies.homepage, companies.phone_number, companies.address, companies.leader_name FROM companies INNER JOIN furniture_items ON (companies.id = furniture_items.company_id)");
+
+        // 家具設置業者の個別情報
+        Schema::create('furniture_setting_items', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('company_id');
+            $table->timestamps();
+        });
+
+        // 配送業者会社のview
+        DB::statement('DROP VIEW IF EXISTS furniture_setting_companies');
+        DB::statement("CREATE VIEW furniture_setting_companies AS SELECT companies.id, companies.name, companies.homepage, companies.phone_number, companies.address, companies.leader_name FROM companies INNER JOIN furniture_setting_items ON (companies.id = furniture_setting_items.company_id)");
+
+        // 家具倉庫
+        Schema::create('furniture_storehouses', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('address');
             $table->string('phone_number');
             $table->timestamps();
         });
@@ -25,8 +100,8 @@ class CretateInitialSchema extends Migration
         // 不動産と部屋の中間テーブル
         Schema::create('estate_company_room', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('estate_company_id');
-            $table->string('room_id');
+            $table->Integer('company_id');
+            $table->Integer('room_id');
             $table->timestamps();
         });
 
@@ -55,6 +130,7 @@ class CretateInitialSchema extends Migration
             $table->string('open_time');
             $table->string('close_time');
             $table->string('open_day');
+            $table->integer('company_id');
             $table->timestamps();
         });
 
@@ -64,7 +140,7 @@ class CretateInitialSchema extends Migration
             $table->string('name');
             $table->integer('purchase_price');
             $table->integer('rental_price');
-            $table->string('furniture_category_id');
+            $table->integer('furniture_category_id');
             $table->integer('height');
             $table->integer('width');
             $table->integer('length');
@@ -82,7 +158,7 @@ class CretateInitialSchema extends Migration
         Schema::create('furniture_images', function (Blueprint $table) {
             $table->increments('id');
             $table->string('image_path');
-            $table->string('furnitures_id');
+            $table->integer('furnitures_id');
             $table->timestamps();
         });
 
@@ -96,8 +172,8 @@ class CretateInitialSchema extends Migration
         // 家具と家具セットの中間テーブル
         Schema::create('furniture_set_furnitures', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('furnitures_id');
-            $table->string('furniture_set_id');
+            $table->integer('furnitures_id');
+            $table->integer('furniture_set_id');
             $table->timestamps();
         });
 
@@ -105,7 +181,7 @@ class CretateInitialSchema extends Migration
         Schema::create('room_furniture_set', function (Blueprint $table) {
             $table->increments('id');
             $table->string('room_id');
-            $table->string('furniture_set_id');
+            $table->integer('furniture_set_id');
             $table->string('fsf_path');
             $table->timestamps();
         });
@@ -125,51 +201,12 @@ class CretateInitialSchema extends Migration
         // 予約
         Schema::create('reserves', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user_id');
-            $table->string('room_id');
-            $table->string('store_id');
-            $table->string('furniture_set_id');
+            $table->Integer('user_id');
+            $table->Integer('room_id');
+            $table->Integer('store_id');
+            $table->Integer('furniture_set_id');
             $table->date('enter_date');
             $table->datetime('visit_datetime');
-            $table->timestamps();
-        });
-
-        // 引越し業者
-        Schema::create('moving_companies', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('homepage');
-            $table->string('address');
-            $table->string('phone_number');
-            $table->timestamps();
-        });
-
-        // 配送業者
-        Schema::create('deliver_companies', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('homepage');
-            $table->string('address');
-            $table->string('phone_number');
-            $table->timestamps();
-        });
-
-        // 家具業者
-        Schema::create('furniture_companies', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('homepage');
-            $table->string('address');
-            $table->string('phone_number');
-            $table->timestamps();
-        });
-
-        // 家具倉庫
-        Schema::create('moving_storehouses', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('address');
-            $table->string('phone_number');
             $table->timestamps();
         });
 
@@ -182,8 +219,8 @@ class CretateInitialSchema extends Migration
         // 部屋とタグの中間テーブル
         Schema::create('tag_furnitures', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('tag_id');
-            $table->string('furniture_id');
+            $table->Integer('tag_id');
+            $table->Integer('furniture_id');
         });
     }
 
@@ -195,7 +232,19 @@ class CretateInitialSchema extends Migration
     public function down()
     {
         Schema::dropIfExists('companies');
-        Schema::dropIfExists('company_room');
+        Schema::dropIfExists('compnay_roles');
+        Schema::dropIfExists('estate_items');
+        DB::statement('DROP VIEW IF EXISTS estate_companies');
+        Schema::dropIfExists('moving_items');
+        DB::statement('DROP VIEW IF EXISTS moving_companies');
+        Schema::dropIfExists('deliver_items');
+        DB::statement('DROP VIEW IF EXISTS deliver_companies');
+        Schema::dropIfExists('furniture_items');
+        DB::statement('DROP VIEW IF EXISTS furniture_companies');
+        Schema::dropIfExists('furniture_setting_items');
+        DB::statement('DROP VIEW IF EXISTS furniture_setting_companies');
+        Schema::dropIfExists('furniture_storehouses');
+        Schema::dropIfExists('estate_company_room');
         Schema::dropIfExists('rooms');
         Schema::dropIfExists('room_images');
         Schema::dropIfExists('stores');
@@ -207,9 +256,6 @@ class CretateInitialSchema extends Migration
         Schema::dropIfExists('room_furniture_set');
         Schema::dropIfExists('users');
         Schema::dropIfExists('reserves');
-        Schema::dropIfExists('moving_companies');
-        Schema::dropIfExists('deliver_companies');
-        Schema::dropIfExists('furniture_company');
         Schema::dropIfExists('tags');
         Schema::dropIfExists('tag_furnitures');
     }
