@@ -99,6 +99,25 @@
 						</div>
 					</div>
 					<br>
+					<div class="row form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
+						<div class="col-md-4">
+							<label>クレジット登録</label>
+						</div>
+						<div class="col-md-8 ml-auto form-row">
+							<div class='card-wrapper'></div>
+							<br>
+							<div id="credit" class="form-row">
+								<div class="form-group col-md-6">
+									<input type="text" class="form-control" name="credit_number" placeholder="カード番号" />
+									<input type="text" class="form-control" name="credit_expiry" placeholder="期限" />
+								</div>
+								<div class="form-group col-md-6">
+									<input type="text" class="form-control" name="credit_name" placeholder="利用者氏名" />
+									<input type="text" class="form-control" name="credit_cvc" placeholder="CVC" />
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="submit" class="btn btn-primary waves-effect waves-light">アカウント登録</button>
@@ -110,9 +129,32 @@
 @endsection
 
 @section('script')
+<script src="{{ asset('js/jquery.card.js') }}"></script>
 <script type="text/javascript">
 	$(function() {
-
+		$('#credit').card({
+			container: '.card-wrapper',
+			formSelectors: {
+				numberInput: 'input[name="credit_number"]', // optional — default input[name="number"]
+				expiryInput: 'input[name="credit_expiry"]', // optional — default input[name="expiry"]
+				cvcInput: 'input[name="credit_cvc"]', // optional — default input[name="cvc"]
+				nameInput: 'input[name="credit_name"]' // optional - defaults input[name="name"]
+			},
+			placeholders: {
+				number: '**** **** **** ****',
+				name: 'Neco Necomura',
+				expiry: '**/****',
+				cvc: '***'
+			},
+			messages: {
+				validDate: 'expire\ndate',
+				monthYear: 'mm/yy'
+			}
+		});
 	});
 </script>
+@endsection
+
+@section('style')
+<link rel="stylesheet" href="{{ asset('css/card.css') }}">
 @endsection
