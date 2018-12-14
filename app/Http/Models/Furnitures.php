@@ -20,4 +20,9 @@ class Furnitures extends Model
     {
         return $this->hasMany('App\Http\Models\FurnitureImage');
     }
+
+    public function tag()
+    {
+        return $this->belongsTo('App\Http\Models\Tag');
+    }
 }
