@@ -16,6 +16,8 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        return redirect("/reserves/create");
+        /*
         $inputs = $request->all();
         $rules = [
             "name" => "required|max:100",
@@ -51,6 +53,6 @@ class UserController extends Controller
             } else {
                 return back()->withinput();
             }
-        }
+        }*/
     }
 }

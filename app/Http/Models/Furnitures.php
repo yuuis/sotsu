@@ -8,7 +8,7 @@ class Furnitures extends Model
 {
     public function category()
     {
-        return $this->belongsTo('App\Http\Models\FurnitureCategory');
+        return $this->belongsTo('App\Http\Models\FurnitureCategory', 'furniture_category_id');
     }
 
     public function sets()

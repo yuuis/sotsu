@@ -43,7 +43,7 @@ class ReserveController extends Controller
         } else {
             $reserve = new Reserve();
             $form = [
-                "user_id" => Session::get("user_id"),
+                "user_id" => Session::get("user_id") || 1,
                 "room_id" => $request->input("room_id"),
                 "store_id" => $request->input("store_id"),
                 "furniture_set_id" => $request->input("furniture_set_id"),

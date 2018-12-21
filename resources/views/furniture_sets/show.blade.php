@@ -19,12 +19,14 @@
                 <table class="table">
                     <tbody>
                         <tr>
+                            <th width="5%">購入</th>
                             <th width="20%">画像</th>
                             <th colspan="2">概要</th>
                         </tr>
                         @foreach ($set->furnitures as $furniture)
                         <tr>
-                            <td rowspan="3"><img src="{{ url($furniture->images[0]->image_path) }}" alt="" width="100%"></td>
+                            <td rowspan="4"><input type="checkbox" checked></td>
+                            <td rowspan="4"><img src="{{ url($furniture->images[0]->image_path) }}" alt="" width="100%"></td>
                             <td colspan="2">{{ $furniture->name }}</td>
                         </tr>
                         <tr>
@@ -34,6 +36,17 @@
                         <tr>
                             <td>購入価格</td>
                             <td>{{ $furniture->purchase_price }}円</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="box-container">
+                                    @foreach($furniture->category->furnitures as $more)
+                                    <div class="box">
+                                        <img width="80px" src="{{ url($more->images[0]->image_path) }}" alt="">
+                                    </div>
+                                    @endforeach
+                                </div>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -54,7 +67,37 @@
 @section('script')
 <script>
     $(function() {
-
+        $('input[type="checkbox"]').change(function() {
+            var bool = $(this).prop('checked');
+            if (bool) {
+                $(this).parent().next('td').find('img').css('opacity', '1');
+            } else {
+                $(this).parent().next('td').find('img').css('opacity', '0.3');
+            }
+        });
     });
 </script>
+@endsection
+
+@section('style')
+<style>
+    .box {
+        float: left;
+    }
+
+    .box-container {
+        overflow: hidden;
+    }
+
+    /* clearfix */
+    .box-container:before,
+    .box-container:after {
+        content: "";
+        display: table;
+    }
+
+    .box-container:after {
+        clear: both;
+    }
+</style>
 @endsection
